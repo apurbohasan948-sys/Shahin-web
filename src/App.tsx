@@ -100,9 +100,9 @@ export default function App() {
     saveToLocalStorage(filtered);
   };
 
-  // Restore back to original template (Vhabesh Sarker image template)
+  // Restore back to original template (Obydullah Haque image template)
   const handleRestoreDefault = () => {
-    if (confirm("This will replace the current active report profile and restore it back to the original database info matching the user's image. Continue?")) {
+    if (confirm("This will replace the current active report profile and restore it back to the original database info matching the user's latest image. Continue?")) {
       const resetList = reports.map((r) => r.id === currentId ? { ...initialReport, id: currentId, personal: { ...initialReport.personal, regNo: currentId } } : r);
       setReports(resetList);
       saveToLocalStorage(resetList);

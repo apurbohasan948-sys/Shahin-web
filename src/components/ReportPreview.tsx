@@ -194,47 +194,50 @@ export const ReportPreview: React.FC<ReportPreviewProps> = ({
 
             {/* DETAILS (Right side) */}
             <div className="flex-1 text-[11.5px]" id="candidate-details-grid">
+              {/* Row 1 in its own header row to match perfect screenshot format */}
+              <div className="flex items-center justify-between w-full mb-1">
+                <div className="flex items-center gap-1 w-[200px]">
+                  <span className="font-sans font-semibold text-slate-800 shrink-0 select-none">Reg No. :</span>
+                  <input
+                    type="text"
+                    value={report.personal.regNo}
+                    onChange={(e) => updateDirectField(["personal", "regNo"], e.target.value)}
+                    className="bg-transparent border-b border-transparent hover:border-slate-200 focus:border-indigo-500 focus:bg-white focus:outline-none transition-all px-1 py-0.5 rounded-sm font-semibold text-slate-900 w-full"
+                  />
+                </div>
+                <div className="flex items-center gap-1 w-[220px] justify-end">
+                  <span className="font-sans font-semibold text-slate-800 shrink-0 select-none">Date of Exam :</span>
+                  <input
+                    type="text"
+                    value={report.personal.dateOfExam}
+                    onChange={(e) => updateDirectField(["personal", "dateOfExam"], e.target.value)}
+                    className="bg-transparent border-b border-transparent hover:border-slate-200 focus:border-indigo-500 focus:bg-white focus:outline-none transition-all px-1 py-0.5 rounded-sm font-semibold text-slate-900 w-[90px] text-right"
+                  />
+                </div>
+              </div>
+
+              {/* Perfectly Aligned Main Details Table */}
               <table className="w-full border-collapse">
                 <tbody>
-                  {/* Row 1: Reg No and Date */}
-                  <tr>
-                    <td className="py-1 font-semibold text-slate-800 w-[120px]">Reg No. :</td>
-                    <td className="py-1 font-mono text-slate-900 pr-4">
-                      <input
-                        type="text"
-                        value={report.personal.regNo}
-                        onChange={(e) => updateDirectField(["personal", "regNo"], e.target.value)}
-                        className={inlineInputStyle}
-                      />
-                    </td>
-                    <td className="py-1 font-semibold text-slate-800 w-[110px] text-right pr-2">Date of Exam :</td>
-                    <td className="py-1 font-mono text-slate-900 w-[120px]">
-                      <input
-                        type="text"
-                        value={report.personal.dateOfExam}
-                        onChange={(e) => updateDirectField(["personal", "dateOfExam"], e.target.value)}
-                        className={inlineInputStyle}
-                      />
-                    </td>
-                  </tr>
-
                   {/* Row 2: Full Name */}
                   <tr>
-                    <td className="py-1 font-semibold text-slate-800">Full Name :</td>
-                    <td colSpan={3} className="py-1 font-extrabold text-slate-900">
+                    <td className="py-1 font-sans font-semibold text-slate-800 w-[116px] select-none text-left">Full Name</td>
+                    <td className="py-1 text-center font-bold text-slate-800 w-[20px] select-none">:</td>
+                    <td className="py-1 font-bold text-slate-950">
                       <input
                         type="text"
                         value={report.personal.fullName}
                         onChange={(e) => updateDirectField(["personal", "fullName"], e.target.value.toUpperCase())}
-                        className={`${inlineInputStyle} font-bold text-slate-900`}
+                        className={`${inlineInputStyle} font-bold text-slate-950`}
                       />
                     </td>
                   </tr>
 
                   {/* Row 3: Father's Name */}
                   <tr>
-                    <td className="py-1 font-semibold text-slate-800">Father's Name :</td>
-                    <td colSpan={3} className="py-1 text-slate-900">
+                    <td className="py-1 font-sans font-semibold text-slate-800 select-none text-left">Father's Name</td>
+                    <td className="py-1 text-center font-bold text-slate-800 select-none">:</td>
+                    <td className="py-1 text-slate-900">
                       <input
                         type="text"
                         value={report.personal.fatherName}
@@ -246,8 +249,9 @@ export const ReportPreview: React.FC<ReportPreviewProps> = ({
 
                   {/* Row 4: Mother's Name */}
                   <tr>
-                    <td className="py-1 font-semibold text-slate-800">Mother's Name :</td>
-                    <td colSpan={3} className="py-1 text-slate-900">
+                    <td className="py-1 font-sans font-semibold text-slate-800 select-none text-left">Mother's Name</td>
+                    <td className="py-1 text-center font-bold text-slate-800 select-none">:</td>
+                    <td className="py-1 text-slate-900">
                       <input
                         type="text"
                         value={report.personal.motherName}
@@ -259,43 +263,50 @@ export const ReportPreview: React.FC<ReportPreviewProps> = ({
 
                   {/* Row 5: Passport No */}
                   <tr>
-                    <td className="py-1 font-semibold text-slate-800">Passport No :</td>
-                    <td colSpan={3} className="py-1 font-bold text-slate-900 font-mono">
+                    <td className="py-1 font-sans font-semibold text-slate-800 select-none text-left">Passport No</td>
+                    <td className="py-1 text-center font-bold text-slate-800 select-none">:</td>
+                    <td className="py-1 font-bold text-slate-950">
                       <input
                         type="text"
                         value={report.personal.passportNo}
                         onChange={(e) => updateDirectField(["personal", "passportNo"], e.target.value.toUpperCase())}
-                        className={`${inlineInputStyle} font-bold font-mono`}
+                        className={`${inlineInputStyle} font-bold`}
                       />
                     </td>
                   </tr>
 
                   {/* Row 6: DOB and Sex */}
                   <tr>
-                    <td className="py-1 font-semibold text-[#1a5f7a]">Date of Birth :</td>
-                    <td className="py-1 font-mono text-slate-900">
-                      <input
-                        type="text"
-                        value={report.personal.dob}
-                        onChange={(e) => updateDirectField(["personal", "dob"], e.target.value)}
-                        className={inlineInputStyle}
-                      />
-                    </td>
-                    <td className="py-1 font-semibold text-slate-800 text-right pr-2">Sex :</td>
-                    <td className="py-1 text-slate-900">
-                      <input
-                        type="text"
-                        value={report.personal.sex}
-                        onChange={(e) => updateDirectField(["personal", "sex"], e.target.value)}
-                        className={inlineInputStyle}
-                      />
+                    <td className="py-1 font-sans font-semibold text-slate-800 select-none text-left">Date of Birth</td>
+                    <td className="py-1 text-center font-bold text-slate-800 select-none">:</td>
+                    <td className="py-1">
+                      <div className="flex items-center justify-between w-full">
+                        <div className="flex-1">
+                          <input
+                            type="text"
+                            value={report.personal.dob}
+                            onChange={(e) => updateDirectField(["personal", "dob"], e.target.value)}
+                            className={inlineInputStyle}
+                          />
+                        </div>
+                        <div className="flex items-center gap-1 w-[120px] justify-end shrink-0 pl-2">
+                          <span className="font-sans font-semibold text-slate-800 select-none">Sex :</span>
+                          <input
+                            type="text"
+                            value={report.personal.sex}
+                            onChange={(e) => updateDirectField(["personal", "sex"], e.target.value.toUpperCase())}
+                            className="bg-transparent border-b border-transparent hover:border-slate-200 focus:border-indigo-500 focus:bg-white focus:outline-none transition-all px-1 py-0.5 rounded-sm font-semibold text-slate-900 w-[55px] text-right"
+                          />
+                        </div>
+                      </div>
                     </td>
                   </tr>
 
                   {/* Row 7: Agency */}
                   <tr>
-                    <td className="py-1 font-semibold text-slate-800">Agency :</td>
-                    <td colSpan={3} className="py-1 text-slate-900 font-mono">
+                    <td className="py-1 font-sans font-semibold text-slate-800 select-none text-left">Agency</td>
+                    <td className="py-1 text-center font-bold text-slate-800 select-none">:</td>
+                    <td className="py-1">
                       <input
                         type="text"
                         value={report.personal.agency}
@@ -437,7 +448,7 @@ export const ReportPreview: React.FC<ReportPreviewProps> = ({
                     <td rowSpan={2} className="border-r border-black font-extrabold text-black text-center select-none bg-slate-50 uppercase tracking-widest leading-loose">
                       <div className="rotate-270 py-2">BIOCHEMICAL</div>
                     </td>
-                    <td className="py-1.5 px-2 border-r border-slate-300 font-bold text-slate-700 select-none">S. Bilirubin</td>
+                    <td className="py-1.5 px-2 border-r border-slate-300 font-bold text-slate-700 select-none">S. Billirubin</td>
                     <td className="py-1 px-2">
                       <input
                         type="text"
@@ -576,44 +587,40 @@ export const ReportPreview: React.FC<ReportPreviewProps> = ({
             {/* CHECKED BY info on left */}
             <div className="w-[200px] text-center" id="footer-checked-by-block">
               {report.footer.showSignatures && report.footer.checkedBy.signature && (
-                <div className="h-12 flex items-center justify-center mb-1 overflow-hidden" id="prev-checkedby-sig">
+                <div className="h-11 flex items-center justify-center mb-1 overflow-hidden" id="prev-checkedby-sig">
                   <img src={report.footer.checkedBy.signature} alt="Signature Checked By" className="max-h-full max-w-full object-contain" />
                 </div>
               )}
-              <div className="border-t border-slate-900 pt-1 font-bold text-slate-800">
+              <div className="border-t border-slate-900 pt-1 font-bold text-slate-800 flex flex-col items-center">
+                <span className="text-[11px] font-bold text-slate-700 leading-tight select-none">Checked By</span>
                 <input
                   type="text"
                   value={report.footer.checkedBy.name}
                   onChange={(e) => updateDirectField(["footer", "checkedBy", "name"], e.target.value)}
-                  className="bg-transparent border-none text-center font-bold focus:outline-none w-full text-[11px]"
+                  className="bg-transparent border-none text-center font-bold focus:outline-none w-full text-[11.5px] mt-0.5"
                 />
               </div>
-              <div className="text-slate-500 text-[10px] whitespace-normal leading-tight">
-                <input
-                  type="text"
-                  value={report.footer.checkedBy.credentials}
-                  onChange={(e) => updateDirectField(["footer", "checkedBy", "credentials"], e.target.value)}
-                  className="bg-transparent border-none text-center focus:outline-none w-full text-[10px]"
-                />
+              <div className="text-slate-500 text-[9.5px] whitespace-pre-wrap leading-tight font-sans mt-0.5">
+                {report.footer.checkedBy.credentials}
               </div>
             </div>
 
             {/* DOCTOR OFFICIAL INFO on right */}
             <div className="w-[220px] text-center" id="footer-doctor-block">
               {report.footer.showSignatures && report.footer.medicalOfficer.signature && (
-                <div className="h-12 flex items-center justify-center mb-1 overflow-hidden" id="prev-doctor-sig">
+                <div className="h-11 flex items-center justify-center mb-1 overflow-hidden" id="prev-doctor-sig">
                   <img src={report.footer.medicalOfficer.signature} alt="Signature Doctor" className="max-h-full max-w-full object-contain" />
                 </div>
               )}
-              <div className="border-t border-slate-900 pt-1 font-bold text-slate-900">
+              <div className="border-t border-slate-900 pt-1 font-bold text-slate-900 flex flex-col items-center">
                 <input
                   type="text"
                   value={report.footer.medicalOfficer.name}
                   onChange={(e) => updateDirectField(["footer", "medicalOfficer", "name"], e.target.value)}
-                  className="bg-transparent border-none text-center font-bold focus:outline-none w-full text-[11px]"
+                  className="bg-transparent border-none text-center font-bold focus:outline-none w-full text-[11.5px]"
                 />
               </div>
-              <div className="text-slate-500 text-[10px] whitespace-pre-wrap leading-tight font-sans">
+              <div className="text-slate-500 text-[9.5px] whitespace-pre-wrap leading-tight font-sans mt-0.5">
                 {report.footer.medicalOfficer.credentials}
               </div>
             </div>
@@ -623,7 +630,7 @@ export const ReportPreview: React.FC<ReportPreviewProps> = ({
           {/* BOTTOM BLUE ABSOLUTE BAR URL */}
           <div className="absolute bottom-0 left-0 right-0 h-9 bg-[#1d4ed8] flex items-center justify-center font-sans tracking-wide" id="printable-blue-footer">
             <span className="text-white text-xs font-bold leading-none select-none">
-              www.aljabbarmedicalflow.com
+              www.aljabbarmedical.com
             </span>
           </div>
 

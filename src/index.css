@@ -1,1 +1,43 @@
 @import "tailwindcss";
+
+/* 
+  Tailwind v4 uses 'oklch()' values as default design tokens. 
+  HTML2Canvas fails when parsing elements configured with oklch computed colors.
+  This scoped fallback block overrides colors with traditional HEX formatting for 
+  safe Canvas/PDF generation.
+*/
+#medical-report-a4-paper,
+#medical-report-a4-paper * {
+  --color-slate-50: #f8fafc !important;
+  --color-slate-100: #f1f5f9 !important;
+  --color-slate-200: #e2e8f0 !important;
+  --color-slate-300: #cbd5e1 !important;
+  --color-slate-400: #94a3b8 !important;
+  --color-slate-500: #64748b !important;
+  --color-slate-600: #475569 !important;
+  --color-slate-700: #334155 !important;
+  --color-slate-800: #1e293b !important;
+  --color-slate-900: #0f172a !important;
+  
+  --color-emerald-50: #f0fdf4 !important;
+  --color-emerald-100: #dcfce7 !important;
+  --color-emerald-600: #16a34a !important;
+  --color-emerald-700: #15803d !important;
+  
+  --color-rose-50: #fff1f2 !important;
+  --color-rose-100: #ffe4e6 !important;
+  --color-rose-600: #e11d48 !important;
+  --color-rose-700: #be123c !important;
+  
+  --color-amber-50: #fffbeb !important;
+  --color-amber-100: #fef3c7 !important;
+  --color-amber-500: #f59e0b !important;
+  --color-amber-600: #d97706 !important;
+  --color-amber-700: #b45309 !important;
+  
+  --color-indigo-50: #f5f3ff !important;
+  --color-indigo-600: #4f46e5 !important;
+  --color-indigo-700: #4338ca !important;
+  --color-blue-600: #2563eb !important;
+}
+
